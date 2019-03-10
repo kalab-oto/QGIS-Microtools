@@ -1,5 +1,8 @@
-group_name = "group_name"
-csv_path = "/path/to/table.csv"
+group_name = "group1"
+csv_path = ""
+
+if csv_path == "":
+    csv_path = QgsProject.instance().readPath("./") + "/group1_layers.csv"
 
 root = QgsProject.instance().layerTreeRoot()
 
@@ -19,3 +22,12 @@ for i in root.findGroup(group_name).findLayers():
 with open(csv_path, "w") as f:
     for item in group_layers:
         f.write("%s\n" % item)
+
+uri = (
+    'file://{}?type=csv&delimiter=%20&useHeader=No&detectTypes=yes'
+    '&geomType=none&subsetIndex=no&watchFile=no'
+).format(csv_path)
+
+layer = iface.addVectorLayer(
+    uri, group_name + "_list", "delimitedtext"
+)
