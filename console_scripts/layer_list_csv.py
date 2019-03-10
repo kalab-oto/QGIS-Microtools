@@ -1,4 +1,8 @@
+#set group name
 group_name = "group1"
+
+#set path to store .csv table. If not set .csv is saved in
+#current projects directory
 csv_path = ""
 
 if csv_path == "":
