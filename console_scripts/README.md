@@ -1,4 +1,4 @@
-#l ayer_list_csv.py
+# layer_list_csv.py
 
 Useful tool for prepare list of layer for iterating layers in Atlas
 
